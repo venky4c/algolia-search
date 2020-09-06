@@ -9,8 +9,6 @@ import {
 } from "react-instantsearch-dom";
 import "./App.css";
 
-
-
 const searchClient = algoliasearch(
   "SSN9CKZUJ2",
   "ae8a3f7cff93d40282a4831930bfa38b"
@@ -22,6 +20,7 @@ export default function App() {
       <div className="app">
         <div className="search-container">
           <SearchBox />
+          <Stats />
           <Hits hitComponent={Product} />
         </div>
       </div>
@@ -30,10 +29,10 @@ export default function App() {
 }
 
 type IProductProps = {
-  hit: Hits;
+  hit: any;
 };
 
-const Product: React.FC<IProductProps> = (hit) => {
+const Product: React.FC<IProductProps> = ({ hit }) => {
   return (
     <a className="product">
       <img src={hit.image} alt={hit.name}></img>
